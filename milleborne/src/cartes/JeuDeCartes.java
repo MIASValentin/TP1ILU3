@@ -1,7 +1,7 @@
 package cartes;
 
 public class JeuDeCartes {
-
+	
 	private Configuration[] typesDeCartes = {
 			new Configuration(new Borne(25), 10),
 			new Configuration(new Borne(50), 10),
@@ -57,4 +57,21 @@ public class JeuDeCartes {
 		return chaine.toString();
 	}
 
+	public Carte[] getCartes() {
+	    int totalCartes = 0;
+	    for (Configuration config : typesDeCartes) {
+	        totalCartes += config.getNbExemplaires();
+	    }
+
+	    Carte[] cartesArray = new Carte[totalCartes];
+	    int index = 0;
+	    
+	    for (Configuration config : typesDeCartes) {
+	        for (int i = 0; i < config.getNbExemplaires(); i++) {
+	            cartesArray[index++] = config.getCarte();
+	        }
+	    }
+	    
+	    return cartesArray;
+	}
 }
