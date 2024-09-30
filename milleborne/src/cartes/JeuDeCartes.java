@@ -25,15 +25,11 @@ public class JeuDeCartes {
 			new Configuration(new Botte(Type.ACCIDENT), 1),
 	};
 	
-	public JeuDeCartes() {
-		
-	}
-	
 	private static class Configuration {
 		private int nbExemplaires = 0;
 		private Carte carte;
 		
-		public Configuration(Carte carte, int nbExemplaires) {
+		private Configuration(Carte carte, int nbExemplaires) {
 			this.nbExemplaires = nbExemplaires;
 			this.carte = carte;
 		}
@@ -57,21 +53,35 @@ public class JeuDeCartes {
 		return chaine.toString();
 	}
 
-	public Carte[] getCartes() {
-	    int totalCartes = 0;
+	public Carte[] donnerCartes() {
+		int totalCartes = 0;
 	    for (Configuration config : typesDeCartes) {
 	        totalCartes += config.getNbExemplaires();
 	    }
 
-	    Carte[] cartesArray = new Carte[totalCartes];
-	    int index = 0;
+	    Carte[] tabCartes = new Carte[totalCartes];
 	    
-	    for (Configuration config : typesDeCartes) {
-	        for (int i = 0; i < config.getNbExemplaires(); i++) {
-	            cartesArray[index++] = config.getCarte();
+	    for (int i = 0,  j = 0; i < typesDeCartes.length; i++) {
+			Configuration configuration = typesDeCartes[i];
+	        for (int k = 0; k < configuration.getNbExemplaires(); k++, j++) {
+	        	tabCartes[j] = configuration.getCarte();
 	        }
 	    }
 	    
-	    return cartesArray;
+	    return tabCartes;
+	}
+	
+	public boolean checkCount() {
+		boolean check = true;
+		Carte[] tabCartes = donnerCartes();
+		for (int i = 0,  j = 0; i < typesDeCartes.length; i++) {
+			Configuration configuration = typesDeCartes[i];
+	        for (int k = 0; k < configuration.getNbExemplaires(); k++, j++) {
+	        	if(!tabCartes[j].equals(configuration.carte)) {
+	        		check = false;
+	        }
+	    }
+		}
+		return check;
 	}
 }

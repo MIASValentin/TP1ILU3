@@ -7,12 +7,12 @@ import java.util.NoSuchElementException;
 import cartes.Carte;
 
 
-public class Sabot<E extends Carte> implements Iterable<E> {
-    private E[] cartes;
+public class Sabot implements Iterable<Carte> {
+    private Carte[] cartes;
     private int nbCartes;
     private int nombreOperation = 0;
 
-    public Sabot(E... cartes) {
+    public Sabot(Carte[] cartes) {
         this.cartes = cartes;
         this.nbCartes = cartes.length;
     }
@@ -21,7 +21,7 @@ public class Sabot<E extends Carte> implements Iterable<E> {
         return nbCartes == 0;
     }
 
-    public void ajouterCarte(E carte) {
+    public void ajouterCarte(Carte carte) {
         if (nbCartes >= cartes.length - 1) {
             throw new IllegalStateException("Capacité maximum atteinte !");
         }
@@ -44,11 +44,11 @@ public class Sabot<E extends Carte> implements Iterable<E> {
     }
 
     @Override
-    public Iterator<E> iterator() {
+    public Iterator<Carte> iterator() {
         return new SabotIterator();
     }
 
-    private class SabotIterator implements Iterator<E> {
+    private class SabotIterator implements Iterator<Carte> {
         private int indiceIterateur = 0;
         private boolean nextEffectue = false;
         private int nombreOperationsReference = nombreOperation;
@@ -59,10 +59,10 @@ public class Sabot<E extends Carte> implements Iterable<E> {
         }
 
         @Override
-        public E next() {
+        public Carte next() {
         	verificationConcurrence();
             if (hasNext()) {
-            	E carte = cartes[indiceIterateur];
+            	Carte carte = cartes[indiceIterateur];
             	indiceIterateur++;
             	nextEffectue = true;
             	return carte;
