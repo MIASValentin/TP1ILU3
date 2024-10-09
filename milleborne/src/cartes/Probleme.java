@@ -7,4 +7,11 @@ public abstract class Probleme extends Carte {
 		this.type = type;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Botte botte) {
+			return type.equals(botte.type);
+		}
+		return false;
+	}
 }

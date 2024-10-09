@@ -71,16 +71,22 @@ public class JeuDeCartes {
 	    return tabCartes;
 	}
 	
+	private int count(Carte carte, Carte[] cartes) {
+		int nbCarte = 0;
+		for(int i = 0; i < cartes.length; i++) {
+			if(carte.equals(cartes[i]))
+				nbCarte += 1;
+		}
+		return nbCarte;
+	}
+	
 	public boolean checkCount() {
-		boolean check = true;
+		boolean check = false;
 		Carte[] tabCartes = donnerCartes();
-		for (int i = 0,  j = 0; i < typesDeCartes.length; i++) {
-			Configuration configuration = typesDeCartes[i];
-	        for (int k = 0; k < configuration.getNbExemplaires(); k++, j++) {
-	        	if(!tabCartes[j].equals(configuration.carte)) {
-	        		check = false;
-	        }
-	    }
+		int indice = 0;
+		for (Configuration configuration: typesDeCartes) {
+			check = check && count(tabCartes[indice], tabCartes) == configuration.getNbExemplaires();
+			indice+=configuration.getNbExemplaires();
 		}
 		return check;
 	}
