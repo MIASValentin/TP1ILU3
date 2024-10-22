@@ -5,7 +5,6 @@ public class JeuDeCartes {
 	private Configuration[] typesDeCartes = {
 			new Configuration(new Borne(25), 10),
 			new Configuration(new Borne(50), 10),
-			new Configuration(new Borne(50), 10),
 			new Configuration(new Borne(75), 10),
 			new Configuration(new Borne(100), 12),
 			new Configuration(new Borne(200), 4),
@@ -81,7 +80,7 @@ public class JeuDeCartes {
 	}
 	
 	public boolean checkCount() {
-		boolean check = false;
+		boolean check = true;
 		Carte[] tabCartes = donnerCartes();
 		int indice = 0;
 		for (Configuration configuration: typesDeCartes) {

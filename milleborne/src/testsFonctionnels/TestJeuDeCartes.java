@@ -5,10 +5,13 @@ import cartes.JeuDeCartes;
 public class TestJeuDeCartes {
 	public static void main(String[] args) {
 		JeuDeCartes jeu = new JeuDeCartes();
-		System.out.println("JEU:\n" + jeu.affichageJeuDeCarte());
+		System.out.println(jeu.affichageJeuDeCarte());
 		
         if (!jeu.checkCount()) {
             System.out.println("erreur de nombre");
+        }
+        else {
+        	System.out.println("TEST_OK");
         }
 
 	}

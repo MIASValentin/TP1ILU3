@@ -43,6 +43,10 @@ public class Sabot implements Iterable<Carte> {
         return carte;
     }
 
+    public Carte[] getCartes() {
+    	return cartes;
+    }
+    
     @Override
     public Iterator<Carte> iterator() {
         return new SabotIterator();

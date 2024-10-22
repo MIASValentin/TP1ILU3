@@ -27,4 +27,24 @@ public class Joueur {
 	public String toString() {
 		return nom;
 	}
+	
+	public Carte prendreCarte(Sabot sabot) {
+		Carte cartePiocher = null;
+		if(!sabot.estVide()) {
+			cartePiocher = sabot.piocher();
+		}
+		return cartePiocher;
+	}
+	
+	public int donnerKmParcourus() {
+		return zoneDeJeu.donnerKmParcourus();
+	}
+	
+	public void deposer(Carte carte) {
+        zoneDeJeu.deposer(carte);
+    }
+	
+	public boolean estDepotAutorise(Carte carte) {
+		return zoneDeJeu.estDepotAutorise(carte);
+	}
 }
