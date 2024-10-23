@@ -27,5 +27,13 @@ public class MainJoueur {
 		}
 		return string.toString();
 	}
+	
+	public int nbCartes() {
+		return cartesJoueur.size();
+	}
+	
+	public Carte getCarte(int index) {
+		return cartesJoueur.get(index);
+	}
 
 }

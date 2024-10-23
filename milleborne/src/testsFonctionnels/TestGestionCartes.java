@@ -35,11 +35,11 @@ public class TestGestionCartes {
 		System.out.println(listeCartes);
 		listeCartes = GestionCartes.melanger(listeCartes);
 		System.out.println(listeCartes);
-		System.out.println("liste mélangée sans erreur ? "
+		System.out.println("liste melangee sans erreur ? "
 		+ GestionCartes.verifierMelange(listeCarteNonMelangee, listeCartes));
 		listeCartes = GestionCartes.rassembler(listeCartes);
 		System.out.println(listeCartes);
-		System.out.println("liste rassemblée sans erreur ? "
+		System.out.println("liste rassemblee sans erreur ? "
 		+ GestionCartes.verifierRassemblement(listeCartes));
 	}
 

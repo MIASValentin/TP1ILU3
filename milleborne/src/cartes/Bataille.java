@@ -7,6 +7,6 @@ public abstract class Bataille extends Carte {
 		this.type = type;
 	}
 
-	public abstract Object getType();
+	public abstract Type getType();
 
 }
